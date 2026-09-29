@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spatial-X1 // 3D Audio Reference Configurator</title>
+    <meta name="description" content="Photorealistic 3D product configurator showcasing reference spatial audio headset with PBR materials, studio lighting, and exploded view." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      #canvas-container canvas {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        outline: none;
+      }
+      /* Single Centered Luxury Floating Capsule Dock */
+      .bottom-dock {
+        background: rgba(18, 12, 9, 0.82);
+        backdrop-filter: blur(28px);
+        -webkit-backdrop-filter: blur(28px);
+        border: 1px solid rgba(224, 169, 109, 0.22);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(217, 119, 6, 0.12);
+      }
+    </style>
+  </head>
+  <body class="bg-[#0c0806] text-[#f7f1eb] min-h-screen overflow-hidden font-sans select-none antialiased">
+
+    <!-- 1. Fullscreen Three.js WebGL Viewport -->
+    <div id="canvas-container" class="fixed inset-0 z-0 cursor-grab active:cursor-grabbing"></div>
+
+
+    <!-- 3. Top Navigation Bar (Clean, Non-wrapping, Professional) -->
+    <header class="fixed top-0 left-0 right-0 z-30 h-16 glass-nav border-b border-amber-900/40 px-4 sm:px-8 flex items-center justify-between gap-4 pointer-events-auto">
+      <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+        <!-- Back to Portfolio -->
+        <a href="https://whhyy.dev/#projects" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#1a120c] hover:bg-[#2e1d13] border border-amber-900/50 text-xs font-mono text-amber-300 hover:text-white transition-all">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span class="hidden sm:inline">Portfolio</span>
+        </a>
+
+        <!-- Brand Title -->
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center font-bold text-stone-950 font-mono shadow-md shadow-amber-600/30 text-xs">
+            🎧
+          </div>
+          <div>
+            <div class="font-mono font-bold text-xs sm:text-sm text-stone-100 flex items-center gap-2">
+              <span>SPATIAL-X1</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-950/80 border border-amber-500/30 text-amber-400 font-mono hidden md:inline">REFERENCE 3D</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Action Controls -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0 font-mono text-xs">
+        <!-- Sound Test Button -->
+        <button id="btn-sound-test" class="px-3.5 py-1.5 rounded-xl bg-[#1d140f] hover:bg-[#2e2017] border border-amber-900/40 text-stone-300 transition-all flex items-center gap-2 shadow-sm">
+          <span>Sound Test 🎵</span>
+        </button>
+
+        <!-- Exploded View Toggle -->
+        <button id="btn-exploded" class="px-3.5 py-1.5 rounded-xl bg-[#1d140f] hover:bg-[#2e2017] border border-amber-900/40 text-amber-300 transition-all flex items-center gap-2 shadow-sm">
+          <span>Exploded View 💥</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 4. Single Unified Luxury Bottom Dock (Never Overlaps, Centered & Balanced) -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-20 w-auto max-w-[95vw] pointer-events-auto">
+      <div class="bottom-dock px-4 sm:px-6 py-3 rounded-2xl flex flex-wrap items-center justify-center gap-3 sm:gap-5">
+        
+        <!-- Finish Color Swatches -->
+        <div class="flex items-center gap-2">
+          <span class="text-[10px] font-mono text-stone-400 uppercase hidden sm:inline">Finish:</span>
+          <div class="flex items-center gap-2">
+            <button data-preset="mocha" title="Mocha & Bronze" class="preset-btn ring-2 ring-amber-400 w-7 h-7 rounded-full bg-[#38281e] border-2 border-amber-500 shadow-md hover:scale-115 transition-transform"></button>
+            <button data-preset="obsidian" title="Midnight Obsidian" class="preset-btn w-7 h-7 rounded-full bg-[#18181b] border-2 border-yellow-500 shadow-md hover:scale-115 transition-transform"></button>
+            <button data-preset="silver" title="Nordic Silver" class="preset-btn w-7 h-7 rounded-full bg-[#d1d5db] border-2 border-sky-400 shadow-md hover:scale-115 transition-transform"></button>
+            <button data-preset="crimson" title="Cyber Crimson" class="preset-btn w-7 h-7 rounded-full bg-[#4c0519] border-2 border-red-500 shadow-md hover:scale-115 transition-transform"></button>
+          </div>
+        </div>
+
+        <div class="h-6 w-px bg-amber-900/40 hidden sm:block"></div>
+
+        <!-- Studio Lighting Rig Switcher -->
+        <div class="flex items-center gap-1.5">
+          <span class="text-[10px] font-mono text-stone-400 uppercase hidden sm:inline">Light:</span>
+          <button data-light="dark" class="light-preset-btn px-2.5 py-1 rounded-lg bg-amber-500 text-stone-950 font-bold text-xs font-mono transition-all">Dark</button>
+          <button data-light="sunset" class="light-preset-btn px-2.5 py-1 rounded-lg bg-[#1c130d] hover:bg-[#2b1b11] text-stone-300 text-xs font-mono transition-all">Sunset</button>
+          <button data-light="cyber" class="light-preset-btn px-2.5 py-1 rounded-lg bg-[#1c130d] hover:bg-[#2b1b11] text-stone-300 text-xs font-mono transition-all">Cyber</button>
+          <button data-light="studio" class="light-preset-btn px-2.5 py-1 rounded-lg bg-[#1c130d] hover:bg-[#2b1b11] text-stone-300 text-xs font-mono transition-all">Daylight</button>
+        </div>
+
+        <div class="h-6 w-px bg-amber-900/40 hidden md:block"></div>
+
+        <!-- Price & Order Action Button -->
+        <div class="flex items-center gap-3 sm:gap-4 pl-1">
+          <div class="font-mono text-right">
+            <span class="text-lg sm:text-xl font-extrabold text-amber-300 tracking-tight" id="product-price">$389</span>
+          </div>
+
+          <button id="btn-add-to-cart" class="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-stone-950 font-extrabold text-xs sm:text-sm shadow-lg shadow-amber-600/30 transition-all flex items-center gap-1.5 transform active:scale-95">
+            <span>Order Build</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <!-- Main Module Script -->
+    <script type="module" src="./spatial.js"></script>
+  </body>
+</html>
+
